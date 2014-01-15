@@ -41,6 +41,11 @@
 
 - (IBAction)CalculateButton:(NSButton *)sender
 {
-	[_textView insertText:@"\nHERG"];
+	[self PrintText:@"hergderg"];
+}
+
+- (void)PrintText:(NSString *)text
+{
+	[_textView insertText:[NSString stringWithFormat:@"\n%@", text]];
 }
 @end

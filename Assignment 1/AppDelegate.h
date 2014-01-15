@@ -18,4 +18,6 @@
 
 - (IBAction)CalculateButton:(NSButton *)sender;
 
+- (void)PrintText:(NSString *)text;
+
 @end
