@@ -93,7 +93,7 @@ NSDate *start;
 		NSDate *stopDate = [NSDate date];
 		NSTimeInterval finalTime = [stopDate timeIntervalSinceDate:start];
 		NSLog(@"finalTime: %f", finalTime);
-		if (finalTime > 1.0)
+		if (finalTime > 0.0)
 		{
 			[NSThread sleepForTimeInterval:3];
 			[printLock lock];
@@ -108,7 +108,7 @@ NSDate *start;
 {
 	start = [NSDate date];
 	//for (int exp=0; exp < 6; exp++)
-	int exp = 6;
+	int exp = 7;
 	while (exp >= 0)
 	{
 		

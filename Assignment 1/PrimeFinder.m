@@ -32,39 +32,70 @@
 
 - (void)findPrimesFrom:(NSDecimalNumber *)start upTo:(NSDecimalNumber *)finish
 {
-	NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-	
-	int starting = start.intValue;
-	
-	if (start.intValue%2 == 0)
+	@synchronized(self)
 	{
-		starting++;
-	}
+		NSMutableArray *returnArray = [[NSMutableArray alloc] init];
 		
-	NSLock *arrayLock = [[NSLock alloc] init];
-	
-	for (int i=starting; i<finish.intValue; i=i+2)
-	{
-		//NSLog(@"Testing %d for primality..", i);
+		int starting = start.intValue;
 		
-		if ([self isThisNumberPrime:i] && i != 0 && i != 1)
+		if (start.intValue%2 == 0)
 		{
-			//NSLog(@"%d is prime!", i);
-			[returnArray addObject:[NSNumber numberWithInt:i]];
-			
-			NSLock *numberLock = [[NSLock alloc] init];
-			
-			[numberLock lock];
-			_numPrimesFound = [NSNumber numberWithInt:_numPrimesFound.intValue+1];
-			[numberLock unlock];
+			starting++;
 		}
+		
+		NSLock *arrayLock = [[NSLock alloc] init];
+		
+		for (int i=starting; i<finish.intValue; i=i+2)
+		{
+			//NSLog(@"Testing %d for primality..", i);
+			
+			if ([self isPrime:i] && i != 0 && i != 1)
+			{
+				//NSLog(@"%d is prime!", i);
+				[returnArray addObject:[NSNumber numberWithInt:i]];
+				
+				NSLock *numberLock = [[NSLock alloc] init];
+				
+				[numberLock lock];
+				_numPrimesFound = [NSNumber numberWithInt:_numPrimesFound.intValue+1];
+				[numberLock unlock];
+			}
+		}
+		
+		[arrayLock lock];
+		[_allPrimes addObjectsFromArray:returnArray.copy];
+		[arrayLock unlock];
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"threadCompleted" object:self];
+	}
+}
+
+- (BOOL)isPrime:(int)number
+{
+	if (number == 3 || number == 2)
+	{
+		return YES;
 	}
 	
-	[arrayLock lock];
-	[_allPrimes addObjectsFromArray:returnArray.copy];
-	[arrayLock unlock];
+	if (number%3 == 0)
+	{
+		return NO;
+	}
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"threadCompleted" object:self];
+	int i = 5;
+	int w = 2;
+	
+	while (i*i <= number)
+	{
+		if (number%i == 0)
+		{
+			return NO;
+		}
+		
+		i+=w;
+		w = 6 - w;
+	}
+	return YES;
 }
 
 - (BOOL)isThisNumberPrime:(int)number
