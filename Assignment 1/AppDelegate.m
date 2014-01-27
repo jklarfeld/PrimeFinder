@@ -97,7 +97,7 @@ NSDate *start;
 		{
 			[NSThread sleepForTimeInterval:3];
 			[printLock lock];
-			[self PrintText:@"All threads completed" andAlsoToScreen:NO];
+			[self PrintText:@"All threads completed" andAlsoToScreen:YES];
 			[printLock unlock];
 			[self printOutPut:finalTime];
 		}
@@ -143,11 +143,15 @@ NSDate *start;
 
 - (void)PrintText:(NSString *)text andAlsoToScreen:(BOOL)toScreen
 {
-	NSLog(@"%@", text);
-	if (toScreen)
-	{
-		[_textView insertText:[NSString stringWithFormat:@"\n%@", text]];
-	}
+    NSLog(@"%@", text);
+    
+    @synchronized(self)
+    {
+        if (toScreen)
+        {
+            [_textView insertText:[NSString stringWithFormat:@"\n%@", text]];
+        }
+    }
 }
 
 - (void)threadCompleted

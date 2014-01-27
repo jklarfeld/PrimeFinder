@@ -124,7 +124,10 @@
 		[arrayLock unlock];
 	}
 	
-	return lastTen.copy;
+    NSSortDescriptor *desc = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+    NSArray *descriptors = [[NSArray alloc] initWithObjects:desc, nil];
+    
+	return [lastTen sortedArrayUsingDescriptors:descriptors];
 }
 
 @end
