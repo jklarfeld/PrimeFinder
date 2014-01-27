@@ -130,4 +130,16 @@
 	return [lastTen sortedArrayUsingDescriptors:descriptors];
 }
 
+- (NSNumber *)sumOfAllPrimes
+{
+    int tempSum = 0;
+    
+    for (NSNumber *aNum in _allPrimes)
+    {
+        tempSum += aNum.intValue;
+    }
+    
+    return [NSNumber numberWithInt:tempSum];
+}
+
 @end

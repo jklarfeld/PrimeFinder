@@ -54,7 +54,7 @@ NSDate *start;
 	_threadsAlloced = [[NSNumber alloc] initWithInt:0];
 	
 	[self addObserver:self forKeyPath:@"threadsAlloced" options:NSKeyValueObservingOptionNew context:nil];
-	//[self redirectConsoleLogToDocumentFolder];
+	[self redirectConsoleLogToDocumentFolder];
 }
 
 - (void) redirectConsoleLogToDocumentFolder
@@ -174,9 +174,10 @@ NSDate *start;
 	//[NSThread sleepForTimeInterval:3];
 	NSLock *printLock = [[NSLock alloc] init];
 	[printLock lock];
-	[self PrintText:[NSString stringWithFormat:@"Number of primes Found: %@", calculator.numPrimesFound] andAlsoToScreen:NO];
-	[self PrintText:[NSString stringWithFormat:@"Last ten primes Found: %@", [calculator lastTenPrimesFound]] andAlsoToScreen:NO];
-	[self PrintText:[NSString stringWithFormat:@"Time taken (in seconds): %f", time] andAlsoToScreen:NO];
+    [self PrintText:[NSString stringWithFormat:@"Time taken (in seconds): %f", time] andAlsoToScreen:NO];
+	[self PrintText:[NSString stringWithFormat:@"Number of primes found: %@", calculator.numPrimesFound] andAlsoToScreen:NO];
+    [self PrintText:[NSString stringWithFormat:@"Sum of all primes found: %@", [calculator sumOfAllPrimes]] andAlsoToScreen:NO];
+	[self PrintText:[NSString stringWithFormat:@"Last ten primes found: %@", [calculator lastTenPrimesFound]] andAlsoToScreen:NO];
 	[printLock unlock];
 }
 @end

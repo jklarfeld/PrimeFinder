@@ -20,4 +20,6 @@
 
 - (NSArray *)lastTenPrimesFound;
 
+- (NSNumber *)sumOfAllPrimes;
+
 @end
