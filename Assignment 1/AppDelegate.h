@@ -12,12 +12,12 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
-@property (weak) IBOutlet NSScrollView *debugBox;
+@property (strong) IBOutlet NSScrollView *debugBox;
 
 @property (strong) NSTextView *textView;
 
-- (IBAction)CalculateButton:(NSButton *)sender;
+@property (strong) NSNumber *threadsAlloced;
 
-- (void)PrintText:(NSString *)text;
+- (IBAction)CalculateButton:(NSButton *)sender;
 
 @end

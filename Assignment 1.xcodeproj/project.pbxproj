@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		254D4E681886ED620015EA94 /* PrimeFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 254D4E671886ED620015EA94 /* PrimeFinder.m */; };
 		2586956B18844B12003092E5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2586956A18844B12003092E5 /* Cocoa.framework */; };
 		2586957518844B12003092E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2586957318844B12003092E5 /* InfoPlist.strings */; };
 		2586957718844B12003092E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2586957618844B12003092E5 /* main.m */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		254D4E661886ED620015EA94 /* PrimeFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimeFinder.h; sourceTree = "<group>"; };
+		254D4E671886ED620015EA94 /* PrimeFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimeFinder.m; sourceTree = "<group>"; };
 		2586956718844B12003092E5 /* Assignment 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2586956A18844B12003092E5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2586956D18844B12003092E5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -73,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		254D4E651886ED470015EA94 /* PrimeFinder */ = {
+			isa = PBXGroup;
+			children = (
+				254D4E661886ED620015EA94 /* PrimeFinder.h */,
+				254D4E671886ED620015EA94 /* PrimeFinder.m */,
+			);
+			name = PrimeFinder;
+			sourceTree = "<group>";
+		};
 		2586955E18844B12003092E5 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +127,7 @@
 		2586957018844B12003092E5 /* Assignment 1 */ = {
 			isa = PBXGroup;
 			children = (
+				254D4E651886ED470015EA94 /* PrimeFinder */,
 				2586957C18844B12003092E5 /* AppDelegate.h */,
 				2586957D18844B12003092E5 /* AppDelegate.m */,
 				2586957F18844B12003092E5 /* MainMenu.xib */,
@@ -254,6 +267,7 @@
 			files = (
 				2586957E18844B12003092E5 /* AppDelegate.m in Sources */,
 				2586957718844B12003092E5 /* main.m in Sources */,
+				254D4E681886ED620015EA94 /* PrimeFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +478,7 @@
 				2586959A18844B12003092E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2586959B18844B12003092E5 /* Build configuration list for PBXNativeTarget "Assignment 1Tests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +487,7 @@
 				2586959D18844B12003092E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
