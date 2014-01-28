@@ -132,14 +132,14 @@
 
 - (NSNumber *)sumOfAllPrimes
 {
-    int tempSum = 0;
+    NSInteger tempSum = 0;
     
     for (NSNumber *aNum in _allPrimes)
     {
         tempSum += aNum.intValue;
     }
     
-    return [NSNumber numberWithInt:tempSum];
+    return [NSNumber numberWithInteger:tempSum];
 }
 
 @end
